@@ -19,7 +19,7 @@ class EmployeeController extends Controller
             $employee = Employee::all();
         }
         if (auth()->user()->role == 'company'){
-            $employee = Employee::where('company_name',auth()->user()->employee_id)->get()->all();
+            $employee = Employee::where('company_id',auth()->user()->employee_id)->get()->all();
         }
         return view('admin.Employee.Post.index', ['employee' => $employee]);
     }
@@ -37,18 +37,12 @@ class EmployeeController extends Controller
     }
     public function store()
     {
-        if (auth()->user()->role == 'admin'){
-            $employee = Employee::all();
-        }
-        if (auth()->user()->role == 'company'){
-            $employee = Employee::where('company_name',auth()->user()->employee_id)->get()->all();
-        }
         $data = request()->validate([
             "Last_Name"=>"string",
             'First_Name'=>"string",
             'Patronymic'=>"string",
             'Passport_id'=>"string",
-            'company_name'=>"string",
+            'company_id'=>"integer",
             'Job_title'=>"string",
             'phone_number'=>"string",
             'Address'=>"string"

@@ -19,4 +19,12 @@ class Companies extends Model
         'website',
         "employee_id"
     ];
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
 }

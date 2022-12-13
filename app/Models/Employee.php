@@ -15,9 +15,16 @@ class Employee extends Model
         'First_Name',
         'Patronymic',
         'Job_title',
-        'company_name',
         'phone_number',
         'Address',
-        'employee_id'
+        'company_id'
         ];
+
+    /**
+     * Get the post that owns the comment.
+     */
+    public function company()
+    {
+        return $this->belongsTo(Companies::class);
+    }
 }

@@ -2,9 +2,9 @@
 @section("content")
     <div class="container">
         <div class="row auto">
-            <form action="{{ route("user.edit" , $employee->id)}}" method="post" class="card p-2">
+            <form action="{{ route("user.update" , $employee->id)}}" method="post" class="card p-2">
                 @csrf
-                @method("post")
+                @method("patch")
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Данные сотрудника</h4>
                     <form class="needs-validation" novalidate="">

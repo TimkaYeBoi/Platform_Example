@@ -16,6 +16,7 @@
                     <th scope="col">Фамилия</th>
                     <th scope="col">Имя</th>
                     <th scope="col">Отчество</th>
+                    <th scope="col">Место работы</th>
                     <th scope="col">Должность</th>
                     <th scope="col">Номер телефона</th>
                     <th scope="col">Адресс</th>
@@ -30,6 +31,7 @@
                         <td>{{ $employee->Last_Name}}</td>
                         <td>{{ $employee->First_Name }}</td>
                         <td>{{ $employee->Patronymic }}</td>
+                        <td>{{ $employee->company->company_name}}</td>
                         <td>{{ $employee->Job_title }}</td>
                         <td>{{ $employee->Phone_number }}</td>
                         <td>{{ $employee->Address }}</td>

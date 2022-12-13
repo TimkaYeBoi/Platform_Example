@@ -28,6 +28,6 @@ Route::get("/user/create" , [\App\Http\Controllers\EmployeeController::class, "c
 Route::post("/user/create" , [\App\Http\Controllers\EmployeeController::class, "store"])->name("user.store");
 Route::get("/user/{employee}" , [\App\Http\Controllers\EmployeeController::class, "show"])->name("user.show");
 Route::get("/user/{employee}/edit" , [\App\Http\Controllers\EmployeeController::class, "edit"])->name("user.edit");
-Route::post("/user/{employee}" , [\App\Http\Controllers\EmployeeController::class, "update"])->name("user.update");
+Route::patch("/user/{employee}" , [\App\Http\Controllers\EmployeeController::class, "update"])->name("user.update");
 Route::get('/user/{employee}/delete', [\App\Http\Controllers\EmployeeController::class, "delete"])->name("user.delete");
 Route::delete('/user/{employee}/destroy',[\App\Http\Controllers\EmployeeController::class, "destroy"])->name("user.destroy");;

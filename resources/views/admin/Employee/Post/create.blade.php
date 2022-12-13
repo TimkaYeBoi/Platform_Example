@@ -41,9 +41,10 @@
                             <div>
                                 <label  class="form-label">Место работы</label>
                                 <select name = "company_name" class="form-select" aria-label="Default select example" required>
-                                    @foreach($companies as $row)
-                                        <option name="company_name" value="{{$row->employee_id}}">{{$row->company_name}}</option>
-                                @endforeach
+                                    <option value="">---Please select---</option>
+                                    @foreach($companies as $company)
+                                        <option name="company_id" value="{{$company->id}}">{{$company->company_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 

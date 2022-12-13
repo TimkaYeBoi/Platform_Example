@@ -3,8 +3,8 @@ namespace App\Http\Controllers;
 use App\Models\AdminList;
 use App\Models\Companies;
 use Illuminate\Http\Request;
-use Hash;
-use Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 class RegController extends Controller

@@ -16,7 +16,7 @@ class Companies extends Model
         'email',
         'address',
         'phone_number',
-        'website'
-
+        'website',
+        "employee_id"
     ];
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('address');
             $table->string('phone_number')->unique();
             $table->string('website')->unique();
+            $table->integer('employee_id');
             $table->timestamps();
         });
     }

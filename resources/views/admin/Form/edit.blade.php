@@ -2,13 +2,19 @@
 @section("content")
     <div class="container">
         <div class="row g-5">
-            <form action="{{ route("form.update" , $post->id)}}" method="post" class="card p-2">
+            <form action="{{ route("form.update" , $post->id)}}" method="post" class="card p-2"  enctype="multipart/form-data">
                 @csrf
                 @method("patch")
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Данные компании</h4>
                     <form class="needs-validation" novalidate="">
                         <div class="row g-3">
+                            <div class="col-12">
+                                <div class="col-6">
+                                    <label for="logo" class="form-label">Логотип компании</label>
+                                    <input type="file" name="logo" id="logo" required value="{{$post->logo}}">
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <label for="company_name" class="form-label">Название компании</label>
                                 <input type="text" class="form-control" name="company_name" required value="{{$post->company_name}}">

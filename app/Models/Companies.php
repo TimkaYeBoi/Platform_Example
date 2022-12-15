@@ -17,7 +17,8 @@ class Companies extends Model
         'address',
         'phone_number',
         'website',
-        "employee_id"
+        "employee_id",
+        'logo'
     ];
 
     /**
@@ -25,6 +26,6 @@ class Companies extends Model
      */
     public function employees()
     {
-        return $this->hasMany(Employee::class);
+        return $this->hasMany(Employee::class,'company_id','id');
     }
 }

@@ -2,12 +2,16 @@
 @section('content')
     <div class="card">
         <div class="card-header d-flex justify-content-between">
+            @if (auth()->user()->role == 'admin')
             <h1>Список</h1>
             <h2>
-                @auth()
                     <a  class="btn btn-warning" href="/admin/create">Create</a>
-                @endauth
             </h2>
+            @endif
+
+            @if (auth()->user()->role == 'company')
+                <h1>Моя компания</h1>
+                @endif
         </div>
 
         <div class="card-body">

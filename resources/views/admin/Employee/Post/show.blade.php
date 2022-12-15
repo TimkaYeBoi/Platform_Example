@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th scope="col">Место работы</th>
-                <td>{{ $employee->company_name}}</td>
+                <td>{{ $employee->company->company_name}}</td>
             </tr>
             <tr>
                 <th scope="col">Должность</th>

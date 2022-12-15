@@ -22,3 +22,9 @@
 </body>
 
 
+<script>
+    import Login from "@/Pages/Auth/Login";
+    export default {
+        components: {Login}
+    }
+</script>

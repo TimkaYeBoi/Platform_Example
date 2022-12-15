@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Companies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompaniesController extends Controller
 {
@@ -28,19 +29,31 @@ class CompaniesController extends Controller
     {
         return view("admin.Form.create");
     }
-    public function store()
+    public function store(Request $request)
     {
         $data = request()->validate([
-            "company_name"=>"string",
-            "director_name"=>"string",
-            "email"=>"string",
-            "address"=>"string",
-            "phone_number"=>"string",
-            "website"=>"string"
+            "company_name" => "string",
+            "director_name" => "string",
+            "logo" => "file",
+            "email" => "string",
+            "address" => "string",
+            "phone_number" => "string",
+            "website" => "string",
         ]);
+
+        // Upload image to database with image name
+
+        if($request->hasFile("logo")) {
+            $image = $request->file("logo");
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('/Image'), $filename);
+        }
+
+        $data['logo'] = $image->getClientOriginalName();
         Companies::create($data);
-        return redirect()->route("index");
-    }
+            return redirect()->route("index");
+        }
+
 
     public function show(Companies $post)
     {
@@ -52,18 +65,29 @@ class CompaniesController extends Controller
         return view("admin.Form.edit", compact("post") );
 
     }
-    public function update(Companies $post){
+    public function update(Companies $post , Request $request){
+
         $data = request()->validate([
             "company_name"=>"string",
             "director_name"=>"string",
+            "logo"=>"file",
             "email"=>"string",
             "address"=>"string",
             "phone_number"=>"string",
             "website"=>"string"
         ]);
+
+        if($request->hasFile("logo")) {
+            $image = $request->file("logo");
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('/Image'), $filename);
+
+        }
+        $data['logo'] = $image->getClientOriginalName();
         $post->update($data);
         return redirect()->route("form.show" , $post->id);
     }
+
     public function delete(Companies $post)
     {
         return view("admin.Form.delete", compact("post"));
@@ -72,6 +96,7 @@ class CompaniesController extends Controller
 
     public function destroy(Companies $post )
     {
+        $post->employees()->delete();
         $post->delete();
         return redirect()->route("index");
     }

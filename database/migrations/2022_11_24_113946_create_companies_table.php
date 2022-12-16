@@ -12,7 +12,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('company_name')->unique();
             $table->string('director_name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->text('address');
             $table->string('phone_number')->unique();
             $table->string('website')->unique();

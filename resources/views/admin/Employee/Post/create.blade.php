@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="Patronymic" class="form-label">Отчество</label>
-                                <input type="text" class="form-control" name="Patronymic" required>
+                                <input type="text" class="form-control" name="Patronymic" >
                                 <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div>
@@ -69,6 +69,16 @@
                             <hr class="my-4">
                             <button class="w-100 btn btn-primary btn-lg" type="submit">Создать
                                 <span class="glyphicon glyphicon-left" aria-hidden="true"></span></button>
+{{--                        error message for all parts--}}
+                            @if ($errors->any())
+                                <div class="alert alert-danger pt-1">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     </form>
                 </div>

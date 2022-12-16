@@ -37,17 +37,18 @@
             </tr>
             </tbody>
         </table>
-{{--        <div class="d-flex justify-content-between ">--}}
-{{--                <span>--}}
-{{--                    <a class=" btn btn-primary btn-dark"  href = "{{route("index")}}">Назад</a>--}}
-{{--                    <a class=" btn btn-primary btn-success"  href = "{{ route("form.edit" , $employee->id)}}">Изменить</a>--}}
-{{--                </span>--}}
-{{--            <form action="{{ route("destroy" , $employee->id)}}" method="post">--}}
-{{--                @csrf--}}
-{{--                @method("delete")--}}
-{{--                <input type="submit" value="Удалить" class="btn btn-danger">--}}
-{{--            </form>--}}
-{{--        </div>--}}
+
+        <div class="d-flex justify-content-between ">
+                <span>
+                    <a class=" btn btn-primary btn-dark"  href = "{{route("index")}}">Назад</a>
+                    <a class=" btn btn-primary btn-success"  href = "{{ route("form.edit" , $employee->id)}}">Изменить</a>
+                </span>
+            <form action="{{ route("destroy" , $employee->id)}}" method="post">
+                @csrf
+                @method("delete")
+                <input type="submit" value="Удалить" class="btn btn-danger">
+            </form>
+        </div>
     </div>
 
 

@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Companies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class CompaniesController extends Controller
 {
     public function index()
     {
-//        $companies = Companies::latest()->paginate(30);
+
+        if (auth()->user()->role == null){
+            redirect("login");
+        }
+
         if (auth()->user()->role == 'admin'){
             $companies = Companies::all();
         }
@@ -34,10 +39,10 @@ class CompaniesController extends Controller
         $data = request()->validate([
             "company_name" => "string",
             "director_name" => "string",
-            "logo" => "file",
-            "email" => "string",
+            "logo" => 'required|mimes:jpeg,jpg,png, svg|max:5000',
+            "email" => "required|string|unique:companies",
             "address" => "string",
-            "phone_number" => "string",
+            "phone_number" => 'required|regex:/^([0-9\+\(\)\ \]*)/|min:9|max:16',
             "website" => "string",
         ]);
 
@@ -68,13 +73,13 @@ class CompaniesController extends Controller
     public function update(Companies $post , Request $request){
 
         $data = request()->validate([
-            "company_name"=>"string",
-            "director_name"=>"string",
-            "logo"=>"file",
-            "email"=>"string",
-            "address"=>"string",
-            "phone_number"=>"string",
-            "website"=>"string"
+            "company_name" => "string",
+            "director_name" => "string",
+            "logo" => 'required|mimes:jpeg,jpg,png|max:5000',
+            "email" => "required|string|email",
+            "address" => "string",
+            "phone_number" => 'required|regex:/^([0-9\+\(\)]*)/|min:9|max:13',
+            "website" => "string",
         ]);
 
         if($request->hasFile("logo")) {

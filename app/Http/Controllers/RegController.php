@@ -23,7 +23,7 @@ class RegController extends Controller
 
         if(Auth::attempt($adminList->only("username" , "password"))){
 //            if (auth()->user()->role === 'admin'){
-                return redirect()->intended("admin/main");
+                return redirect()->intended("admin/companies");
 //            }
         }
         else{

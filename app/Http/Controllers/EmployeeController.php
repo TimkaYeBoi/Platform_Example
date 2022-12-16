@@ -41,10 +41,10 @@ class EmployeeController extends Controller
             "Last_Name"=>"string",
             'First_Name'=>"string",
             'Patronymic'=>"string",
-            'Passport_id'=>"string",
+            'Passport_id'=>"string|regex:/^([0-9\[A-Z]\[a-z]\]*)/|min:7|max:12",
             'company_id'=>"integer",
             'Job_title'=>"string",
-            'phone_number'=>"string",
+            'phone_number'=>'required|regex:/^([0-9\+\(\)\ \]*)/|min:9|max:16',
             'Address'=>"string"
 
         ]);

@@ -44,11 +44,13 @@
                     <a class=" btn btn-primary btn-dark"  href = "{{route("index")}}">Назад</a>
                     <a class=" btn btn-primary btn-success"  href = "{{ route("form.edit" , $post->id)}}">Изменить</a>
                 </span>
+                @if (auth()->user()->role == 'admin')
                 <form action="{{ route("destroy" , $post->id)}}" method="post">
                     @csrf
                     @method("delete")
                     <input type="submit" value="Удалить" class="btn btn-danger">
                 </form>
+                @endif
             </div>
         </div>
 

@@ -9,4 +9,5 @@ class PostController extends Controller
         return view('layouts.app');
     }
 
+
 }

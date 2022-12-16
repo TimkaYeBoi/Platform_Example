@@ -1,5 +1,6 @@
 @extends("admin.layouts.app")
 @section("content")
+
     <div class="container">
         <div class="row g-5">
             <form action="{{ route("form.store") }}" method="post" class="card p-2" enctype="multipart/form-data">
@@ -11,6 +12,7 @@
                             <div class="col-6">
                                 <label for="logo" class="form-label">Логотип компании</label>
                                 <input type="file" name="logo" id="logo" required>
+
                             </div>
 
                             <div class="col-12">
@@ -25,16 +27,12 @@
                             <div class="col-12">
                                 <label for="director_name" class="form-label">Имя руководителя</label>
                                 <input type="text" class="form-control" name="director_name" required>
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
                             </div>
                             <div class="col-12">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
-                                <div class="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
-                                </div>
+
+
                             </div>
 
                             <div class="col-sm-6">
@@ -46,7 +44,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label  class="form-label">Номер телефона</label>
-                                <input type="text" class="form-control" name="phone_number" value="+998" required>
+                                <input  class="form-control" name="phone_number" required>
                                 <div class="invalid-feedback">
                                     Введите номер телефона
                                 </div>
@@ -63,6 +61,15 @@
                             <hr class="my-4">
                             <button class="w-100 btn btn-primary btn-lg" type="submit">Создать
                                 <span class="glyphicon glyphicon-left" aria-hidden="true"></span></button>
+                            @if ($errors->any())
+                                <div class="alert alert-danger pt-1">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     </form>
                 </div>
